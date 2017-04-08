@@ -18,6 +18,9 @@ class DataAcquisition:
         # settings yml loaded to dict
         self.settings = self.__load_settings__()
 
+        # required only for demo purposes
+        self.demo_settings = self.__load_demo_settings__()
+
         # utilized to control acquisition publisher
         self.publisher_enabled = False
 
@@ -37,13 +40,13 @@ class DataAcquisition:
         # while enabled continue to publish data
         while self.publisher_enabled:
             # randomly generate an image index to transmit
-            index = randint(0, len(self.settings[IMAGES]) - 1)
+            index = randint(0, len(self.demo_settings[IMAGES]) - 1)
 
-            selected_image = self.settings[IMAGES][index]
+            selected_image = self.demo_settings[IMAGES][index]
 
             # Load color image
             # Shape needed if we want to view image after storing, print('Shape:', img.shape)
-            img = cv2.imread(self.settings[IMAGE_DIR] + selected_image)
+            img = cv2.imread(self.demo_settings[IMAGE_DIR] + selected_image)
 
             # strip the file type suffix to get label
             label = selected_image.split('.')[0]
@@ -56,7 +59,7 @@ class DataAcquisition:
             print('Data published:', label)
 
             # wait interval than grab next image to simulate production supply chain
-            time.sleep(self.settings[PROD_INTERVAL])
+            time.sleep(self.demo_settings[PROD_INTERVAL])
 
     def stop_acquisition(self):
         """
@@ -79,6 +82,17 @@ class DataAcquisition:
     def __load_settings__():
         """
         Load and return settings as dict
+        """
+        settings_file = open('settings.yml')
+        settings = yaml.safe_load(settings_file)
+        settings_file.close()
+
+        return settings
+
+    @staticmethod
+    def __load_demo_settings__():
+        """
+        Load and return demo specific settings
         """
         settings_file = open('demo/settings.yml')
         settings = yaml.safe_load(settings_file)

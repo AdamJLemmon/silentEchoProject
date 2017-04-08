@@ -8,8 +8,8 @@ import yaml
 import zerorpc
 import zmq
 
-from .constants import *
-from .ipfs_api import IpfsApi
+from application.ipfs_api import IpfsApi
+from application.constants import *
 
 
 class ApplicationServer:
@@ -145,7 +145,7 @@ class ApplicationServer:
         """
         Load and return settings yml as dict
         """
-        settings_file = open('demo/settings.yml')
+        settings_file = open('settings.yml')
         settings = yaml.safe_load(settings_file)
         settings_file.close()
 

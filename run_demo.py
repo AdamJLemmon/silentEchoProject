@@ -4,8 +4,8 @@
 import threading
 import time
 
+from application.application_server import ApplicationServer
 from demo.data_acquisition import DataAcquisition
-from demo.application_server import ApplicationServer
 
 
 class Demo:

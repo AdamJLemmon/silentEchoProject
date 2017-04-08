@@ -2,9 +2,9 @@ var zerorpc = require("zerorpc"); // rpc to serve api
 var YAML = require('yamljs');
 var Web3 = require('web3'); // ethereum interface
 var mailer = require('nodemailer'); // module to send notification emails
-var web3Utils = require('./utils/web3');
+var web3Utils = require('../utils/web3');
 
-var constants = YAML.load('constants.yml'); // static strings
+var constants = YAML.load('../constants.yml'); // static strings
 
 // connect to local geth node
 var web3 = new Web3(
