@@ -1,0 +1,12 @@
+zmq:
+    port: '50505'
+    pub_ip: 'tcp://*:'
+    sub_ip: 'tcp://127.0.0.1:'
+
+ipfs:
+    ip: '127.0.0.1'
+    port: 5001
+
+zerorpc:
+    ip: 'tcp://127.0.0.1:'
+    port: '4242'
